@@ -1,3 +1,4 @@
+import { IntroPage } from './../intro/intro';
 import { EmotionListPage } from './../emotion-list/emotion-list';
 import { Component } from '@angular/core';
 

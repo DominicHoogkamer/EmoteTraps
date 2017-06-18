@@ -121,7 +121,7 @@
   </ion-list>
 </div>
 
-<ion-slides *ngIf="showTraps">
+<ion-slides *ngIf="showTraps" pager>
   <ion-slide padding *ngFor="let trap of thinkingArray; let i = index">
     <h3>{{trap.title}}</h3>
     <p>{{trap.desc}}</p>

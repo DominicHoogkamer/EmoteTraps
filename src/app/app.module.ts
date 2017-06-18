@@ -1,3 +1,4 @@
+import { IntroPage } from './../pages/intro/intro';
 import { EmotionPage } from './../pages/emotion/emotion';
 import { AddEmotionPage } from './../pages/add-emotion/add-emotion';
 import { EmotionListService } from './../services/emotion-list';
@@ -24,7 +25,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     TabsPage,
     EmotionListPage,
     AddEmotionPage,
-    EmotionPage
+    EmotionPage,
+    IntroPage
   ],
   imports: [
     BrowserModule,
@@ -39,7 +41,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     TabsPage,
     EmotionListPage,
     AddEmotionPage,
-    EmotionPage
+    EmotionPage,
+    IntroPage
   ],
   providers: [
     StatusBar,
