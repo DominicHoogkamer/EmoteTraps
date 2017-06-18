@@ -1,3 +1,4 @@
+import { EmotionListPage } from './../emotion-list/emotion-list';
 import { Component } from '@angular/core';
 
 import { AboutPage } from '../about/about';
@@ -9,7 +10,7 @@ import { HomePage } from '../home/home';
 })
 export class TabsPage {
 
-  tab1Root = HomePage;
+  tab1Root = EmotionListPage;
   tab2Root = AboutPage;
   tab3Root = ContactPage;
 

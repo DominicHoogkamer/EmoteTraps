@@ -1,3 +1,7 @@
+import { EmotionPage } from './../pages/emotion/emotion';
+import { AddEmotionPage } from './../pages/add-emotion/add-emotion';
+import { EmotionListService } from './../services/emotion-list';
+import { EmotionListPage } from './../pages/emotion-list/emotion-list';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
@@ -17,7 +21,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    EmotionListPage,
+    AddEmotionPage,
+    EmotionPage
   ],
   imports: [
     BrowserModule,
@@ -29,11 +36,15 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    EmotionListPage,
+    AddEmotionPage,
+    EmotionPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    EmotionListService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

@@ -1,0 +1,138 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>add-emotion</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+<ion-slides *ngIf="firstQuestion && feelingItem === 'feelingColor'" >
+  <ion-slide padding class="ion-slide-feeling">
+    <h3>Swipe to show how you feeling with the help of a specific color</h3>
+    <ion-row justify-content-center>
+      <ion-col col-5>
+        <button ion-button outline block color="light" (click)="nextPage('primary', 1)"> Add Color</button>
+      </ion-col>
+    </ion-row>
+  </ion-slide>
+  <ion-slide padding class="ion-slide-feeling">
+    <h3>Swipe to show how you feeling with the help of a specific color</h3>
+    <ion-row justify-content-center>
+      <ion-col col-5>
+        <button ion-button outline block color="light" (click)="nextPage('primary', 1)"> Add Color</button>
+      </ion-col>
+    </ion-row>
+  </ion-slide>
+  <ion-slide padding class="ion-slide-feeling">
+    <h3>Swipe to show how you feeling with the help of a specific color</h3>
+    <ion-row justify-content-center>
+      <ion-col col-5>
+        <button ion-button outline block color="light" (click)="nextPage('primary', 1)"> Add Color</button>
+      </ion-col>
+    </ion-row>
+  </ion-slide>
+</ion-slides>
+
+<ion-slides *ngIf="firstQuestion && feelingItem === 'feelingEmote'">
+  <ion-slide padding>
+    <h3>Swipe to show how you feeling with the help of a specific emote</h3>
+    <img src="http://i.imgur.com/GRCAOQJ.png" alt="">
+    <ion-row justify-content-center>
+      <ion-col col-5>
+        <button ion-button outline block color="light" (click)="nextPage('primary', 1)"> Add Emote</button>
+      </ion-col>
+    </ion-row>
+  </ion-slide>
+  <ion-slide padding>
+    <h3>Swipe to show how you feeling with the help of a specific emote</h3>
+    <img src="http://i.imgur.com/GRCAOQJ.png" alt="">
+    <ion-row justify-content-center>
+      <ion-col col-5>
+        <button ion-button outline block color="light" (click)="nextPage('primary', 1)"> Add Emote</button>
+      </ion-col>
+    </ion-row>
+  </ion-slide>
+  <ion-slide padding>
+    <h3>Swipe to show how you feeling with the help of a specific emote</h3>
+    <img src="http://i.imgur.com/GRCAOQJ.png" alt="">
+    <ion-row justify-content-center>
+      <ion-col col-5>
+        <button ion-button outline block color="light" (click)="nextPage('primary', 1)"> Add Emote</button>
+      </ion-col>
+    </ion-row>
+  </ion-slide>
+</ion-slides>
+
+
+
+
+<div class="intro-center-div" *ngIf="secondQuestion" padding style="text-align: center;">
+  <ion-list >
+      <h3>Describe what you are doing at the moment</h3>
+      <p>To help customize your experience. This will help understand you as a person for the application and more help will be
+        provided
+      </p>
+
+    <ion-item>
+      <ion-label floating>Describe here</ion-label>
+      <ion-input type="text" [(ngModel)]="description"></ion-input>
+    </ion-item>
+
+    <ion-row justify-content-center>
+      <p>Take a selfie so we can analyze your emotions</p>
+      <ion-col col-5>
+        <button  ion-button block outline color="primary" (click)="nextPage('',2)">Take selfie</button>
+      </ion-col>
+      <ion-col col-5>
+        <button  ion-button block outline color="primary" (click)="nextPage('',2)">Or Dont</button>
+      </ion-col>
+    </ion-row>
+
+
+  </ion-list>
+</div>
+<div class="intro-center-div" *ngIf="thirdQuestion" padding style="text-align: center;">
+  <ion-list>
+      <h3>Did you identify any thinking traps?</h3>
+      <p>Negative thoughts mosty comes from simple thinking traps. Once we know these kind of traps it is easier to prevent them from happening and you become more positive</p>
+      <h3>So if you have experienced a thinking trap. Check them.</h3>
+    <ion-item>
+      <ion-label >Thinking trap</ion-label>
+      <ion-select [(ngModel)]="thinkingTraps" multiple="true">
+        <ion-option value="Focusing on the negative">Focusing on the negative</ion-option>
+        <ion-option value="personalization">Personalization</ion-option>
+        <ion-option value="blaming">Blaming</ion-option>
+        <ion-option value="mind reading">Mind reading</ion-option>
+        <ion-option value="minimizing">Minimizing</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-row justify-content-center>
+      <p>Take a selfie so we can analyze your emotions</p>
+      <ion-col col-5>
+        <button outline ion-button block color="primary" (click)="nextPage('',3)">Take Selfie</button>
+      </ion-col>
+    </ion-row>
+
+  </ion-list>
+</div>
+
+<ion-slides *ngIf="showTraps">
+  <ion-slide padding *ngFor="let trap of thinkingArray; let i = index">
+    <h3>{{trap.title}}</h3>
+    <p>{{trap.desc}}</p>
+    <ion-row justify-content-center>
+      <ion-col col-5>
+        <button  ion-button outline large color="light" (click)="onAddItem()"> Add Note</button>
+      </ion-col>
+    </ion-row>
+  </ion-slide>
+</ion-slides>
+
+
+
+</ion-content>
