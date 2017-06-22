@@ -1,6 +1,7 @@
+import { Camera, CameraOptions } from '@ionic-native/camera';
+import { DataProvider } from './../../services/data';
 import { NavController } from 'ionic-angular';
 import { EmotionListService } from './../../services/emotion-list';
-import { NgForm } from '@angular/forms/src/forms';
 import { Component } from '@angular/core';
 
 @Component({
@@ -48,11 +49,45 @@ member may be quite de-motivating`
 
 
 
-  constructor(private elService: EmotionListService, private navCtrl: NavController) {
+  constructor(private elService: EmotionListService, private navCtrl: NavController, private data: DataProvider, private camera: Camera) {
 
     this.feelingItem = this.feelingsArray[Math.floor(Math.random()*this.feelingsArray.length)];
     console.log(this.feelingItem);
+
+
+//     const options: CameraOptions = {
+//      quality: 75,
+//       destinationType: this.camera.DestinationType.DATA_URL,
+//       sourceType: this.camera.PictureSourceType.CAMERA,
+//       allowEdit: true,
+//       encodingType: this.camera.EncodingType.JPEG,
+//       targetWidth: 256,
+//       targetHeight: 371,
+//       saveToPhotoAlbum: false,
+//       cameraDirection: 1
+// }
+
+// this.camera.getPicture(options).then((imageData) => {
+//  // imageData is either a base64 encoded string or a file URI
+//  // If it's base64:
+//  let base64Image = 'data:image/jpeg;base64,' + imageData;
+//  this.getEmotion(base64Image);
+//  console.log('test');
+// }, (err) => {
+//  // Handle error
+// });
+
     
+
+ 
+    
+  }
+
+  getEmotion(img) {
+       this.data.getPersonEmotion(this.makeblob(img)).subscribe(data => {
+      console.log(data);
+      console.log('gelukt');
+    })
   }
 
   onAddItem() {
@@ -81,6 +116,28 @@ member may be quite de-motivating`
 
     }
   }
+
+  makeblob (dataURL) {
+            var BASE64_MARKER = ';base64,';
+            if (dataURL.indexOf(BASE64_MARKER) == -1) {
+                var parts = dataURL.split(',');
+                var contentType = parts[0].split(':')[1];
+                var raw = decodeURIComponent(parts[1]);
+                return new Blob([raw], { type: contentType });
+            }
+            var parts = dataURL.split(BASE64_MARKER);
+            var contentType = parts[0].split(':')[1];
+            var raw = window.atob(parts[1]);
+            var rawLength = raw.length;
+
+            var uInt8Array = new Uint8Array(rawLength);
+
+            for (var i = 0; i < rawLength; ++i) {
+                uInt8Array[i] = raw.charCodeAt(i);
+            }
+
+            return new Blob([uInt8Array], { type: contentType });
+        }
 
 
 
