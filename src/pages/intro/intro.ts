@@ -1,24 +1,34 @@
+import { EmotionListPage } from './../emotion-list/emotion-list';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the IntroPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
-@IonicPage()
+
 @Component({
   selector: 'page-intro',
   templateUrl: 'intro.html',
 })
 export class IntroPage {
 
+  private name: string;
+  private description : string;
+  private improve: string;
+  private reminder: any;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad IntroPage');
+  finishIntro() {
+    let userObject = {
+      'name': this.name,
+      'desc': this.description,
+      'improve': this.improve,
+      'reminder': this.reminder
+    }
+
+    localStorage.setItem('userInfo', JSON.stringify(userObject));
+
+    this.navCtrl.setRoot(EmotionListPage);
   }
+
 
 }

@@ -1,6 +1,7 @@
+import { DataProvider } from './../../services/data';
 import { EmotionListService } from './../../services/emotion-list';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 
 @Component({
   selector: 'page-emotion',
@@ -11,23 +12,51 @@ export class EmotionPage {
   private listItems: any;
   private index: number;
 
-  private name: string;
+  private showTraps: boolean = false;
+
+  private emotion: string;
   private desc: string;
+  private descEmotion: string;
+  private faceImg: any = 'http://www.designshock.com/wp-content/uploads/2016/04/man-4-400.jpg';
 
   private traps: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public elService: EmotionListService) {
+  private anger: number = 0;
+  private happy: number = 0;
+  private neutral: number = 0;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public elService: EmotionListService, public data: DataProvider) {
   }
 
   ionViewWillEnter() {
     this.loadItems();
     this.index = this.navParams.get('index');
 
-    this.name = this.listItems[this.index].name;
+    this.emotion = this.listItems[this.index].emotionType;
     this.desc = this.listItems[this.index].desc;
     this.traps = this.listItems[this.index].traps;
+    this.descEmotion = this.listItems[this.index].descEmotion;
 
-    console.log(this.traps[0].title)
+    if (this.listItems[this.index].faceAnalyse[0]) {
+      this.anger = this.listItems[this.index].faceAnalyse[0].scores.anger;
+      this.happy = this.listItems[this.index].faceAnalyse[0].scores.happy;
+      this.neutral = this.listItems[this.index].faceAnalyse[0].scores.neutral;
+    }
+
+    if (this.listItems[this.index].faceImg) {
+      this.faceImg = this.listItems[this.index].faceImg;
+    }
+    this.data.getDescEmotion(this.desc).subscribe(data => {
+      this.descEmotion = data.emotion;
+    })
+  }
+
+  seeTrapsSuggestions() {
+    this.showTraps = true;
+  }
+
+  closeTraps() {
+    this.showTraps = false;
   }
 
   private loadItems() {

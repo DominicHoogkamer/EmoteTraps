@@ -7,12 +7,16 @@
     <p>To help customize your experience,
 This will help to understand you as a person better for the application and more help will be provided</p>
     <ion-item>
+      <ion-label floating>What is your name?</ion-label>
+      <ion-input type="text" [(ngModel)]="name"></ion-input>
+    </ion-item>
+    <ion-item>
       <ion-label floating>I Like to</ion-label>
       <ion-input type="text" [(ngModel)]="description"></ion-input>
     </ion-item>
     <ion-row justify-content-center>
       <ion-col col-5>
-        <button ion-button block color="primary" (click)="nextPage('primary', 1)"> Next</button>
+        <button ion-button block color="primary" (click)="nextPage()"> Next</button>
       </ion-col>
     </ion-row>
   </ion-slide>
@@ -25,11 +29,11 @@ This will help to understand you as a person better for the application and more
 This will help to understand you as a person better for the application and more help will be provided</p>
     <ion-item>
       <ion-label floating>I want to improve</ion-label>
-      <ion-input type="text" [(ngModel)]="description"></ion-input>
+      <ion-input type="text" [(ngModel)]="improve"></ion-input>
     </ion-item>
     <ion-row justify-content-center>
       <ion-col col-5>
-        <button ion-button block color="danger" (click)="nextPage('primary', 1)"> Next</button>
+        <button ion-button block color="danger" (click)="nextPage()"> Next</button>
       </ion-col>
     </ion-row>
   </ion-slide>
@@ -41,11 +45,11 @@ This will help to understand you as a person better for the application and more
     <p>To help build your logging habit, so this will help you improve to prevent negative traps and will stimulate happiness</p>
     <ion-item>
       <ion-label>Date</ion-label>
-      <ion-datetime displayFormat="HH:mm:a"></ion-datetime>
+      <ion-datetime displayFormat="HH:mm:a" [(ngModel)]="reminder"></ion-datetime>
     </ion-item>
     <ion-row justify-content-center>
       <ion-col col-5>
-        <button ion-button block color="secondary" (click)="nextPage('primary', 1)"> Next</button>
+        <button ion-button block color="secondary" (click)="finishIntro()"> Next</button>
       </ion-col>
     </ion-row>
   </ion-slide>

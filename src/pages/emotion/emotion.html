@@ -14,58 +14,81 @@
 
 
 <ion-content>
+  <div *ngIf="!showTraps">
+    <img src="{{ emotion }}" alt="" style="">
+    <ion-item text-center>
+      <h2>Your Feelings of this day!</h2>
+      <p>{{ desc }}</p>
+    </ion-item>
 
-  <img src="" alt="" style="background: #F45273; width: 100%; height: 200px">
-  <ion-item text-center>
-    <h2>Your Feelings of this day!</h2>
-    <p>{{ desc }}</p>
-  </ion-item>
+    <ion-list style="margin-bottom: 0;">
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="{{ faceImg }}">
+        </ion-avatar>
+        <ion-row>
+          <ion-col>
+            <p>Anger</p>
+            <h3>{{ anger }}</h3>
+          </ion-col>
+          <ion-col>
+            <p>Neutral</p>
+            <h3>{{ neutral }}</h3>
+          </ion-col>
+          <ion-col>
+            <p>Happy</p>
+            <h3>{{ happy }}</h3>
+          </ion-col>
+        </ion-row>
+      </ion-item>
 
-  <ion-list style="margin-bottom: 0;">
-    <ion-item>
-      <ion-avatar item-start>
-        <img src="http://i.imgur.com/GRCAOQJ.png">
-      </ion-avatar>
-      <ion-row>
-        <ion-col><p>Happy</p><h3>50%</h3></ion-col>
-        <ion-col><p>Happy</p><h3>50%</h3></ion-col>
-        <ion-col><p>Happy</p><h3>50%</h3></ion-col>
+    </ion-list>
+
+
+    <ion-row justify-content-center class="traps" text-center padding style="margin-bottom: 20px;">
+      <h5>We have analyzed your description of the moment and the emotion is</h5>
+      <p>{{ descEmotion }}</p><br />
+      <ion-col col-4>
+        <button ion-button block outline color="primary" (click)="seeTrapsSuggestions()">Suggestions</button>
+      </ion-col>    
       </ion-row>
-    </ion-item>   
 
-  </ion-list>  
+    <ion-list style="margin-bottom: 0;">
+      <ion-list-header>
+        Your Thinking Traps
+      </ion-list-header>
 
-
-  <ion-row justify-content-center class="traps" text-center padding style="margin-bottom: 20px;">
-    <h5>Would you like to do a excersize to improve your positivity</h5>
-    <ion-col col-5>
-      <button ion-button block outline color="primary">Start</button>
-    </ion-col>
-  </ion-row>  
-
-  <ion-list style="margin-bottom: 0;">
-  <ion-list-header>
-    Your Thinking Traps
-  </ion-list-header>
-
-    <ion-item *ngFor="let trap of traps; let i = index">
-      <ion-avatar item-start>
-        <img src="http://i.imgur.com/GRCAOQJ.png">
-      </ion-avatar>
-      <h2>{{ trap.title }}</h2>
-      <p>{{ trap.desc }}</p>
-    </ion-item>    
-  </ion-list>
+      <ion-item *ngFor="let trap of traps; let i = index">
+        <ion-avatar item-start>
+          <img src="http://i.imgur.com/GRCAOQJ.png">
+        </ion-avatar>
+        <h2>{{ trap.title }}</h2>
+        <p>{{ trap.desc }}</p>
+      </ion-item>
+    </ion-list>
 
 
-  <ion-row justify-content-center class="traps">
-    <ion-col col-4>
-      <button ion-button block outline color="primary">Add Trap</button>
-    </ion-col>
-    <ion-col col-4>
-      <button ion-button block outline color="primary">Suggestions</button>
-    </ion-col>
-  </ion-row>
+    <ion-row justify-content-center class="traps">
+      <ion-col col-4>
+        <button ion-button block outline color="primary">Add Trap</button>
+      </ion-col>
+      <ion-col col-4>
+        <button ion-button block outline color="primary" (click)="seeTrapsSuggestions()">Suggestions</button>
+      </ion-col>
+    </ion-row>
+  </div>
+
+  <ion-slides *ngIf="showTraps" pager>
+    <ion-slide padding *ngFor="let trap of traps; let i = index">
+      <h3>{{trap.title}}</h3>
+      <p>{{trap.desc}}</p>
+      <ion-row justify-content-center>
+        <ion-col col-5>
+          <button ion-button outline large color="light" (click)="closeTraps()"> Back to Emotion </button>
+        </ion-col>
+      </ion-row>
+    </ion-slide>
+  </ion-slides>
 
 
 </ion-content>

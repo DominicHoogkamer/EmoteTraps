@@ -1,3 +1,4 @@
+import { ProfilePage } from './../pages/profile/profile';
 import { Camera } from '@ionic-native/camera';
 import { DataProvider } from './../services/data';
 // import { DataService } from './../services/data.service';
@@ -32,6 +33,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     EmotionListPage,
     AddEmotionPage,
     EmotionPage,
+    ProfilePage,
     IntroPage
   ],
   imports: [
@@ -49,6 +51,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     EmotionListPage,
     AddEmotionPage,
     EmotionPage,
+    ProfilePage,
     IntroPage
   ],
   providers: [

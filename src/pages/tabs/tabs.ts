@@ -1,3 +1,4 @@
+import { ProfilePage } from './../profile/profile';
 import { IntroPage } from './../intro/intro';
 import { EmotionListPage } from './../emotion-list/emotion-list';
 import { Component } from '@angular/core';
@@ -11,9 +12,8 @@ import { HomePage } from '../home/home';
 })
 export class TabsPage {
 
-  tab1Root = EmotionListPage;
-  tab2Root = AboutPage;
-  tab3Root = ContactPage;
+  tab1Root = IntroPage;
+  tab3Root = ProfilePage;
 
   constructor() {
 
