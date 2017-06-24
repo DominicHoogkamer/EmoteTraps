@@ -10,6 +10,10 @@ page-add-emotion {
         &:nth-of-type(3) {
             background: $primary;
         }
+        h3 {
+        color: #FFF;
+        margin-bottom: 30px;
+    }
     }
 
     h3 {

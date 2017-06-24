@@ -42,7 +42,7 @@ export class DataProvider {
 
   getMusic(artist) {
 
-    const acces_token = 'BQCVCl5VGqFwoQ_vsRLvSKJk61_yQvWSuX0EDrhT3uM5-KVNrBsLUM6gUA1VfgKXNTspP02B8lKA9WBACsSQUf5pBRrBw64jCWZk0YWZRghSnLA9nzqOFdMClIndOM0O9d64odDnPwjfwzKJ8RfkTsb9-4dM2biyCXXDb5jdv0I2opJSW9kww2XDqV3ARj77f-fymq0S3_oZsPR7tKofraGMhEnthg8mp7GU4UAYC1-kNm_DZzQHQmjWGor_nhDtIsqT8w216yqzkZm8mT7ovOp6R9dSKgj8B2dsvMLqTgCBhlsX5BjFgS_GJr8dwA';
+    const acces_token = 'BQBGuNPM32w1ukVOPLzfKhlDvzWLlqRihDEoQH063VPim9GHg_xnoblEQVfSOQo95WWNmOURnzxtopwnMrR9YxzkWLzLOLcNoXr7oWwTQ-_lK97ZzJ30kr9FkNmvFKAvlsq2D1Ooj-mghgF9qjuF-PNUkqt6ARbBonmrppBEbZ3z2699GAXmOJ25GPbpesq0Tw3d1oDuv1NJZnZK39CJcjSdQJloFiFpTli_rWNGDz6Uq5MMIVmKsRVLwWMLkpMWrziAesT9tPZTAItdBJhXdAr6RBBPi0SjZvCZp3SZ_wQKO1ZJCKnTzKA4MEG21A';
 
     const headers = new Headers({
       'Authorization': 'Bearer ' + acces_token
@@ -50,7 +50,7 @@ export class DataProvider {
 
   const options = new RequestOptions({ headers })
 
-   return this.http.get('https://api.spotify.com/v1/search?q='+ artist + '&type=track&limit=3', options)
+   return this.http.get('https://api.spotify.com/v1/search?q='+ artist + '&type=track&limit=5', options)
       .map(data => (data.json().tracks.items))
       .do(result => console.log(result));
   }

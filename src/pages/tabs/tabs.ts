@@ -1,3 +1,4 @@
+import { LoginPage } from './../login/login';
 import { ProfilePage } from './../profile/profile';
 import { IntroPage } from './../intro/intro';
 import { EmotionListPage } from './../emotion-list/emotion-list';
@@ -12,7 +13,7 @@ import { HomePage } from '../home/home';
 })
 export class TabsPage {
 
-  tab1Root = IntroPage;
+  tab1Root = LoginPage;
   tab3Root = ProfilePage;
 
   constructor() {

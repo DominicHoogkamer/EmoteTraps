@@ -37,26 +37,25 @@
   </ion-slides>
 
   <ion-slides *ngIf="firstQuestion && feelingItem === 'feelingMusic'">
-    <ion-slide padding class="ion-slide-feeling">
-      <h3>Swipe to show how you feeling with the help of a specific color</h3>
-      <ion-searchbar [(ngModel)]="song" (ionInput)="setFilteredSongs()"></ion-searchbar>
-      <ion-list>
+    <ion-slide >
+      <h3>Add a song that describes your emotions</h3>
+      <ion-searchbar [(ngModel)]="song" (ionInput)="setFilteredSongs()" animated=true ></ion-searchbar>
+      <ion-list padding>
         <ion-item *ngFor="let item of songItems">
           <ion-thumbnail item-start>
             <img src="{{ item.album.images[2].url }}">
           </ion-thumbnail>
           <h2>{{ item.artists[0].name }}</h2>
           <p>{{ item.name }}</p>
-          <button ion-button clear item-end (click)="playTrack(item.preview_url)">Preview</button>
+          <button ion-button clear item-end (click)="playTrack(item.preview_url)"> Preview </button>
           <button ion-button clear item-end (click)="nextPage(item.album.images[0].url, 1)">Choose</button>
         </ion-item>
       </ion-list>
-      <ion-row justify-content-center>
-        <ion-col col-5>
-          <button ion-button outline block color="light" (click)="nextPage('assets/img/HappyScreen.png', 1)"> Add Color</button>
-        </ion-col>
-      </ion-row>
     </ion-slide>
+
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
   </ion-slides>
 
   <ion-slides *ngIf="firstQuestion && feelingItem === 'feelingEmote'">
@@ -65,7 +64,7 @@
       <img src="http://i.imgur.com/GRCAOQJ.png" alt="">
       <ion-row justify-content-center>
         <ion-col col-5>
-          <button ion-button outline block color="light" (click)="nextPage('http://i.imgur.com/GRCAOQJ.png', 1)"> Add Emote</button>
+          <button ion-button outline block color="primary" (click)="nextPage('http://i.imgur.com/GRCAOQJ.png', 1)"> Add Emote</button>
         </ion-col>
       </ion-row>
     </ion-slide>
@@ -74,7 +73,7 @@
       <img src="http://i.imgur.com/GRCAOQJ.png" alt="">
       <ion-row justify-content-center>
         <ion-col col-5>
-          <button ion-button outline block color="light" (click)="nextPage('http://i.imgur.com/GRCAOQJ.png', 1)"> Add Emote</button>
+          <button ion-button outline block color="primary" (click)="nextPage('http://i.imgur.com/GRCAOQJ.png', 1)"> Add Emote</button>
         </ion-col>
       </ion-row>
     </ion-slide>
@@ -83,7 +82,7 @@
       <img src="http://i.imgur.com/GRCAOQJ.png" alt="">
       <ion-row justify-content-center>
         <ion-col col-5>
-          <button ion-button outline block color="light" (click)="nextPage('http://i.imgur.com/GRCAOQJ.png', 1)"> Add Emote</button>
+          <button ion-button outline block color="primary" (click)="nextPage('http://i.imgur.com/GRCAOQJ.png', 1)"> Add Emote</button>
         </ion-col>
       </ion-row>
     </ion-slide>
@@ -110,7 +109,7 @@
           <button ion-button block outline color="primary" (click)="takeSelfie()">Take selfie</button>
         </ion-col>
         <ion-col col-5>
-          <button ion-button block outline color="primary" (click)="nextPage('',2)">Or Dont</button>
+          <button ion-button block [disabled]="!description" outline color="primary" (click)="nextPage('',2)">Or Dont</button>
         </ion-col>
       </ion-row>
 
@@ -136,9 +135,8 @@
       </ion-item>
 
       <ion-row justify-content-center>
-        <p>Take a selfie so we can analyze your emotions</p>
         <ion-col col-5>
-          <button outline ion-button block color="primary" (click)="nextPage('',3)">Take Selfie</button>
+          <button outline ion-button [disabled]="!thinkingTraps.length > 0" block color="primary" (click)="nextPage('',3)">Add Traps</button>
         </ion-col>
       </ion-row>
 
@@ -147,11 +145,12 @@
 
   <ion-slides *ngIf="showTraps" pager>
     <ion-slide padding *ngFor="let trap of thinkingArray; let i = index">
+      <img src="{{ trap.img }}" alt="">
       <h3>{{trap.title}}</h3>
       <p>{{trap.desc}}</p>
       <ion-row justify-content-center>
         <ion-col col-5>
-          <button ion-button outline large color="light" (click)="onAddItem()"> Add Note</button>
+          <button ion-button outline large color="primary" (click)="onAddItem()"> Finish </button>
         </ion-col>
       </ion-row>
     </ion-slide>

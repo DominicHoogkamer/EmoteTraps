@@ -10,9 +10,11 @@ import { Component } from '@angular/core';
   templateUrl: 'add-emotion.html',
 })
 export class AddEmotionPage {
-    songItems: DataProvider;
-    song: any = "happy";
-    descEmotion: any;
+    preview: HTMLAudioElement;
+    isPlaying: boolean = false;;
+  songItems: DataProvider;
+  song: any = "happy";
+  descEmotion: any;
 
   private feelingsArray = [
     "feelingColor",
@@ -31,7 +33,7 @@ export class AddEmotionPage {
   private faceIMG: any;
   private description: string;
   private songId: string;
-  private faceAnalyse= [];
+  private faceAnalyse = [];
   private thinkingTraps = [];
   private thinkingArray = [];
 
@@ -42,14 +44,16 @@ export class AddEmotionPage {
 complex and determined by
 many things, you accept too
 much responsibility and blame
-yourself for negative outcomes.`
+yourself for negative outcomes.`,
+    img: 'assets/img/personalization.png',
     },
     'blaming': {
       title: 'Blaming',
       desc: `Newer members may wish to blame others for their problems. Coordinators may feel
 compelled to show the member how he or she is actually at fault for the difficulties
 encountered. Resist this urge. Blame is irrelevant and pointing the blame back at the
-member may be quite de-motivating`
+member may be quite de-motivating`,
+img: 'assets/img/blaming.png',
     },
     'nothing': {
       title: 'You have experienced no negative traps',
@@ -63,7 +67,7 @@ member may be quite de-motivating`
   constructor(private elService: EmotionListService, private navCtrl: NavController, private data: DataProvider, private camera: Camera) {
 
     this.feelingItem = this.feelingsArray[Math.floor(Math.random() * this.feelingsArray.length)];
-    
+
 
   }
 
@@ -98,16 +102,27 @@ member may be quite de-motivating`
     })
   }
 
-  setFilteredSongs(){
-      this.data.getMusic(this.song).subscribe(data => {
+  setFilteredSongs() {
+    this.data.getMusic(this.song).subscribe(data => {
       this.songItems = data;
       console.log(this.songItems);
     })
   }
 
   playTrack(url) {
-    let preview = new Audio(url);
-    preview.play();
+
+
+    if(this.isPlaying) {
+        this.preview.pause();
+        this.preview.currentTime = 0;
+        this.isPlaying = false
+    } else {
+        this.isPlaying = true
+        this.preview = new Audio(url);
+        this.preview.play();
+    }
+
+
   }
 
   onAddItem() {
@@ -121,6 +136,11 @@ member may be quite de-motivating`
       this.emotion = data;
       this.firstQuestion = false;
       this.secondQuestion = true;
+
+      if(this.isPlaying) {
+        this.preview.pause();
+        this.isPlaying = false;
+      }
     } else if (pageId == 2) {
       this.secondQuestion = false;
       this.thirdQuestion = true;

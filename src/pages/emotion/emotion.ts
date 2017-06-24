@@ -39,8 +39,12 @@ export class EmotionPage {
 
     if (this.listItems[this.index].faceAnalyse[0]) {
       this.anger = this.listItems[this.index].faceAnalyse[0].scores.anger;
-      this.happy = this.listItems[this.index].faceAnalyse[0].scores.happy;
+      this.happy = this.listItems[this.index].faceAnalyse[0].scores.happiness;
       this.neutral = this.listItems[this.index].faceAnalyse[0].scores.neutral;
+
+      Number(this.happy).toFixed(3);
+      Number(this.neutral).toFixed(3);
+
     }
 
     if (this.listItems[this.index].faceImg) {

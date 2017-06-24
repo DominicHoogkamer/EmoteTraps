@@ -1,3 +1,4 @@
+import { LoginPage } from './../pages/login/login';
 import { ProfilePage } from './../pages/profile/profile';
 import { Camera } from '@ionic-native/camera';
 import { DataProvider } from './../services/data';
@@ -10,6 +11,7 @@ import { EmotionListPage } from './../pages/emotion-list/emotion-list';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { LocalNotifications } from '@ionic-native/local-notifications';
 import { MyApp } from './app.component';
 
 import { HttpModule } from "@angular/http";
@@ -34,12 +36,16 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AddEmotionPage,
     EmotionPage,
     ProfilePage,
-    IntroPage
+    IntroPage,
+    LoginPage
   ],
   imports: [
     BrowserModule,
     HttpModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp, {
+      scrollAssist: false, 
+      autoFocusAssist: false
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -52,13 +58,15 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AddEmotionPage,
     EmotionPage,
     ProfilePage,
-    IntroPage
+    IntroPage,
+    LoginPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     EmotionListService,
     DataProvider,
+    LocalNotifications,
     Camera,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]

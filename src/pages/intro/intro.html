@@ -1,6 +1,6 @@
 <ion-content padding>
 
-  <ion-slides pager>
+  <ion-slides>
   <ion-slide padding class="ion-slide-feeling">
     <img src="assets/img/Intro-1.png" alt="">
     <h5>Tell us a bit about you</h5>
@@ -16,7 +16,7 @@ This will help to understand you as a person better for the application and more
     </ion-item>
     <ion-row justify-content-center>
       <ion-col col-5>
-        <button ion-button block color="primary" (click)="nextPage()"> Next</button>
+        <button  [disabled]="!name || !description" ion-button block color="primary" (click)="nextPage()"> Next</button>
       </ion-col>
     </ion-row>
   </ion-slide>
@@ -33,7 +33,7 @@ This will help to understand you as a person better for the application and more
     </ion-item>
     <ion-row justify-content-center>
       <ion-col col-5>
-        <button ion-button block color="danger" (click)="nextPage()"> Next</button>
+        <button ion-button [disabled]="!improve" block color="danger" (click)="nextPage()"> Next</button>
       </ion-col>
     </ion-row>
   </ion-slide>
@@ -49,7 +49,7 @@ This will help to understand you as a person better for the application and more
     </ion-item>
     <ion-row justify-content-center>
       <ion-col col-5>
-        <button ion-button block color="secondary" (click)="finishIntro()"> Next</button>
+        <button ion-button [disabled]="!reminder" block color="secondary" (click)="finishIntro()"> Next</button>
       </ion-col>
     </ion-row>
   </ion-slide>
