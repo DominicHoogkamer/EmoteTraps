@@ -3,8 +3,8 @@ import { Emotion } from "../models/emotion";
 export class EmotionListService {
   private emotions: Emotion[] = [];
 
-  addItem(emotionType: string, desc: string, traps: any, faceAnalyse: any, faceImg: any) {
-    this.emotions.push(new Emotion(emotionType, desc, traps, faceAnalyse, faceImg));
+  addItem(emotionType: string, desc: string, traps: any, faceAnalyse: any, faceImg: any, time: any) {
+    this.emotions.push(new Emotion(emotionType, desc, traps, faceAnalyse, faceImg, time));
     console.log(this.emotions);
   }
 

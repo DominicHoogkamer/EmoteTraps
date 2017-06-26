@@ -24,6 +24,7 @@ export class EmotionPage {
   private anger: number = 0;
   private happy: number = 0;
   private neutral: number = 0;
+    private fear: number = 0;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public elService: EmotionListService, public data: DataProvider) {
   }
@@ -38,7 +39,9 @@ export class EmotionPage {
     this.descEmotion = this.listItems[this.index].descEmotion;
 
     if (this.listItems[this.index].faceAnalyse[0]) {
+      console.log(this.listItems[this.index].faceAnalyse[0]);
       this.anger = this.listItems[this.index].faceAnalyse[0].scores.anger;
+      this.fear = this.listItems[this.index].faceAnalyse[0].scores.fear;
       this.happy = this.listItems[this.index].faceAnalyse[0].scores.happiness;
       this.neutral = this.listItems[this.index].faceAnalyse[0].scores.neutral;
 

@@ -3,7 +3,7 @@ import { DataProvider } from './../../services/data';
 import { NavController } from 'ionic-angular';
 import { EmotionListService } from './../../services/emotion-list';
 import { Component } from '@angular/core';
-
+import moment from 'moment';
 
 @Component({
   selector: 'page-add-emotion',
@@ -37,6 +37,8 @@ export class AddEmotionPage {
   private thinkingTraps = [];
   private thinkingArray = [];
 
+  private buttonText = "Or Dont";
+
   private trapsArray = {
     'personalization': {
       title: 'Personalization',
@@ -55,6 +57,22 @@ encountered. Resist this urge. Blame is irrelevant and pointing the blame back a
 member may be quite de-motivating`,
 img: 'assets/img/blaming.png',
     },
+    'mindreading': {
+      title: 'Mind Reading',
+      desc: `Believing you know what others are thinking (and assuming it's negative), without any real evidence. The problem: you can't read minds, so stop trying.`,
+      img: 'assets/img/mindreading.png',
+    },
+    'catastrophizing': {
+      title: 'Catastrophizing',
+      desc: `Imagining the worst-case scenario, no matter how unlikely in reality. Please add the positive things during the day.`,
+      img: 'assets/img/emoteTrapsLogo.png',
+    },
+    'overgeneralizing': {
+      title: 'Overgeneralizing',
+      desc: `Making sweeping judgments about ourselves (or others) based on only one or two experiences. These thoughts typically contain the words "always" and "never." The problem: you can never be summed up in one word or base your value as a person on only one single experience!`,
+      img: 'assets/img/emoteTrapsLogo.png',
+    },
+
     'nothing': {
       title: 'You have experienced no negative traps',
       desc: `Good job on you! now go do somthing positive!`
@@ -83,6 +101,8 @@ img: 'assets/img/blaming.png',
       saveToPhotoAlbum: false,
       cameraDirection: 1
     }
+          this.buttonText = "next";
+
 
     this.camera.getPicture(options).then((imageData) => {
       // imageData is either a base64 encoded string or a file URI
@@ -126,7 +146,8 @@ img: 'assets/img/blaming.png',
   }
 
   onAddItem() {
-    this.elService.addItem(this.emotion, this.description, this.thinkingArray, this.faceAnalyse, this.faceIMG);
+    let time = moment().format('HH:mm');
+    this.elService.addItem(this.emotion, this.description, this.thinkingArray, this.faceAnalyse, this.faceIMG, time);
     this.navCtrl.popToRoot();
   }
 

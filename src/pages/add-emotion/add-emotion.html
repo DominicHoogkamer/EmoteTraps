@@ -61,28 +61,46 @@
   <ion-slides *ngIf="firstQuestion && feelingItem === 'feelingEmote'">
     <ion-slide padding>
       <h3>Swipe to show how you feeling with the help of a specific emote</h3>
-      <img src="http://i.imgur.com/GRCAOQJ.png" alt="">
+      <img src="assets/img/excited.png" alt="">
       <ion-row justify-content-center>
         <ion-col col-5>
-          <button ion-button outline block color="primary" (click)="nextPage('http://i.imgur.com/GRCAOQJ.png', 1)"> Add Emote</button>
+          <button ion-button outline block color="primary" (click)="nextPage('assets/img/excited.png', 1)"> Add Emote</button>
+        </ion-col>
+      </ion-row>
+    </ion-slide>
+        <ion-slide padding>
+      <h3>Swipe to show how you feeling with the help of a specific emote</h3>
+      <img src="assets/img/happy.png" alt="">
+      <ion-row justify-content-center>
+        <ion-col col-5>
+          <button ion-button outline block color="primary" (click)="nextPage('assets/img/happy.png', 1)"> Add Emote</button>
         </ion-col>
       </ion-row>
     </ion-slide>
     <ion-slide padding>
       <h3>Swipe to show how you feeling with the help of a specific emote</h3>
-      <img src="http://i.imgur.com/GRCAOQJ.png" alt="">
+      <img src="assets/img/sad.png" alt="">
       <ion-row justify-content-center>
         <ion-col col-5>
-          <button ion-button outline block color="primary" (click)="nextPage('http://i.imgur.com/GRCAOQJ.png', 1)"> Add Emote</button>
+          <button ion-button outline block color="primary" (click)="nextPage('assets/img/sad.png', 1)"> Add Emote</button>
         </ion-col>
       </ion-row>
     </ion-slide>
     <ion-slide padding>
       <h3>Swipe to show how you feeling with the help of a specific emote</h3>
-      <img src="http://i.imgur.com/GRCAOQJ.png" alt="">
+      <img src="assets/img/irritared.png" alt="">
       <ion-row justify-content-center>
         <ion-col col-5>
-          <button ion-button outline block color="primary" (click)="nextPage('http://i.imgur.com/GRCAOQJ.png', 1)"> Add Emote</button>
+          <button ion-button outline block color="primary" (click)="nextPage('assets/img/irritared.png', 1)"> Add Emote</button>
+        </ion-col>
+      </ion-row>
+    </ion-slide>
+      <ion-slide padding>
+      <h3>Swipe to show how you feeling with the help of a specific emote</h3>
+      <img src="assets/img/scared.png" alt="">
+      <ion-row justify-content-center>
+        <ion-col col-5>
+          <button ion-button outline block color="primary" (click)="nextPage('assets/img/scared.png', 1)"> Add Emote</button>
         </ion-col>
       </ion-row>
     </ion-slide>
@@ -109,7 +127,7 @@
           <button ion-button block outline color="primary" (click)="takeSelfie()">Take selfie</button>
         </ion-col>
         <ion-col col-5>
-          <button ion-button block [disabled]="!description" outline color="primary" (click)="nextPage('',2)">Or Dont</button>
+          <button ion-button block [disabled]="!description" outline color="primary" (click)="nextPage('',2)">{{ buttonText }}</button>
         </ion-col>
       </ion-row>
 
@@ -125,11 +143,11 @@
       <ion-item>
         <ion-label>Thinking trap</ion-label>
         <ion-select [(ngModel)]="thinkingTraps" multiple="true">
-          <ion-option value="Focusing on the negative">Focusing on the negative</ion-option>
+          <ion-option value="overgeneralizing">Overgeneralizing</ion-option>
           <ion-option value="personalization">Personalization</ion-option>
           <ion-option value="blaming">Blaming</ion-option>
-          <ion-option value="mind reading">Mind reading</ion-option>
-          <ion-option value="minimizing">Minimizing</ion-option>
+          <ion-option value="mindreading">Mind reading</ion-option>
+          <ion-option value="catastrophizing">Catastrophizing</ion-option>
           <ion-option value="nothing">Nothing</ion-option>
         </ion-select>
       </ion-item>

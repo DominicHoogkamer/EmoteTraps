@@ -42,6 +42,24 @@
     </ion-list>
 
 
-    <ion-row justify-content-center text-left class="traps" padding>
+    <ion-row justify-content-center text-left  padding>
+  <ion-list style="margin-bottom: 0;">
+      <ion-item>
+        <ion-row>
+          <ion-col col-12>
+            <p>I like to</p>
+            <h3>{{ userInfo.desc }}</h3>
+          </ion-col>
+          <ion-col col-12>
+            <p>What would i like to improve?</p>
+            <h3>{{ userInfo.improve }}</h3>
+          </ion-col>
+          <ion-col col-12>
+            <p>My Reminders</p>
+            <h3>{{ userInfo.reminder }}</h3>
+          </ion-col>
+        </ion-row>
+      </ion-item>
 
+    </ion-list>
     </ion-row>
