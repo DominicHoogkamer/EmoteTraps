@@ -13,7 +13,7 @@ import { HomePage } from '../home/home';
 })
 export class TabsPage {
 
-  tab1Root = EmotionListPage;
+  tab1Root = LoginPage;
   tab3Root = ProfilePage;
 
   constructor() {
